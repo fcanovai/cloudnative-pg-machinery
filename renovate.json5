@@ -7,7 +7,7 @@
     ":labels(automated,no-issue)",
     "customManagers:githubActionsVersions",
     ":automergeMinor",
-    ":automergeDigest",
+    ":automergeDigest"
   ],
   "postUpdateOptions": [
     "gomodTidy"
@@ -31,6 +31,12 @@
   ],
   "packageRules": [
     {
+      "matchManagers": ["gomod"],
+      "matchDepTypes": ["golang"],
+      "matchFileNames": ["dagger/gotest/go.mod"],
+      "enabled": false
+    },
+    {
       "matchDatasources": [
         "go"
       ],
@@ -43,6 +49,7 @@
         "digest"
       ],
       "groupName": "all non-major go dependencies",
+      "matchFileNames": ["^go.mod$"]
     },
     {
       "matchDatasources": [
@@ -54,14 +61,14 @@
       "matchUpdateTypes": [
         "digest"
       ],
-      "groupName": "all cloudnative-pg daggerverse dependencies",
+      "groupName": "all cloudnative-pg daggerverse dependencies"
     },
     {
       "matchUpdateTypes": [
         "minor",
         "patch"
       ],
-      "matchCurrentVersion": "!/^0/",
+      "matchCurrentVersion": "!/^0/"
     }
   ]
 }
